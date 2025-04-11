@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - EASY BANKING</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1A1A2E, #16213E, #0F3460, #E94560); /* Multi-stop gradient for depth */
+            background-size: 200% 200%;
+            animation: gradientAnimation 10s ease infinite;
+            color: #ECF0F1;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .navbar-custom {
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-custom a {
+            color: #ECF0F1 !important;
+        }
+
+        .navbar-custom .navbar-brand {
+            font-weight: bold;
+            color: #E94560 !important; /* Accent color */
+        }
+
+        .navbar-custom .social-icons a {
+            color: #ECF0F1;
+            margin-left: 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-custom .social-icons a:hover {
+            color: #E94560; /* Accent color for hover */
+        }
+
+        .container {
+            max-width: 450px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            text-align: center;
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+        }
+
+        .container h2 {
+            color: #E94560; /* Accent color for headings */
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            color: #BDC3C7;
+            text-align: left;
+            display: block;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            border: 1px solid #BDC3C7;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark input background */
+            color: #ECF0F1;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .btn {
+            background-color: #E94560; /* Vibrant button color */
+            border: none;
+            color: #ECF0F1;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #F05454;
+            transform: scale(1.05); /* Slight grow on hover */
+        }
+
+        .custom-link {
+            color: #E94560; /* Accent color for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .custom-link:hover {
+            color: #F05454; /* Lighter accent for hover */
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ECF0F1;
+            padding: 15px 0;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#">EASY BANKING</a>
+    <div class="ml-auto social-icons">
+        <a href=" https://youtu.be/vfi6notc748?si=N9BzxkL_XDp0F8La" target="_blank" title="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </div>
+</nav>
+
+<div class="container">
+    <h2 class="text-center">Login</h2>
+    <form method="post" action="/login">
+        <div class="form-group">
+            <label>Username:</label>
+            <input type="text" class="form-control" name="username" required />
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" class="form-control" name="password" required />
+        </div>
+        <button type="submit" class="btn btn-block">Login</button>
+    </form>
+    <p class="text-center mt-3">Don't have an account? <a href="/register" class="custom-link">Register here</a></p>
+
+    <div th:if="${param.error}" class="alert alert-danger mt-3 text-center">
+        Invalid username or password.
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy;  All rights reserved. | <a href="#" class="custom-link">Privacy Policy</a> | <a href="#" class="custom-link">Terms of Service</a></p>
+</footer>
+
+</body>
+</html>
